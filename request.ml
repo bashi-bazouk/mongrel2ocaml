@@ -54,34 +54,3 @@ let read_request request =
     path = path;
     headers = read_headers headers;
     body = body }
-
-
-
-(*
-
-let r = regexp
-
-let ctxt = init 1
-let pull = socket ctxt PULL
-
-let ws = "[ \t]+"
-let number = "\\([0-9]+\\)"
-let process_request s =
-  let chomp s i = string_before i
-  let rec process_request = function
-    | `UUID -> fun s ->
-      let delim = index s ' ' in
-      let (uuid, rest) = (string_before s delim, string_after s delim) in
-      (`UUID, uuid)::(process_request `ID rest)
-    | `ID -> fun s ->
-      let delim = index s ' ' in
-      let (uuid, rest) = (string_before s delim, string_after s delim) in
-      (`UUID, uuid)::(process_request `HEADERS rest)
-
-let uuid = "\\([a-z]\\|[A-Z]\\|[0-9]\\|[-]\\)+"
-let id = number
-let path = "\\([^ ]+\\)" (* Obviously context-sensitive *)
-let size = number
-let headers = "{"
-
-*)
