@@ -5,7 +5,7 @@ type response = {
   ids: int list;
   body: string }
 
-let string_of_response r =
+let string_of_response (r: response): string =
   let netstring_of_string s = (string_of_int (String.length s)) ^ ":" ^ s
   and intercalate sep xs = 
     let rec intercalate_tr acc = function

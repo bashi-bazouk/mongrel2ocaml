@@ -8,7 +8,7 @@ type request = {
   headers: (string * string) list;
   body: string }
 
-let read_request request =
+let read_request (request: string): request =
   let split_at i s = 
     if succ i > length s then
       (s, "")
