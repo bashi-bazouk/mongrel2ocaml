@@ -8,6 +8,17 @@ type request = {
   headers: (string * string) list;
   body: string }
 
+let pp_request (request: request): unit =
+  print_endline ("uuid: " ^ request.uuid);
+  print_endline ("id: " ^ (string_of_int request.id));
+  print_endline ("path: " ^ request.path);
+  print_endline "headers:"
+    List.iter (fun (k,v) ->
+      print_endline (k ^ ": " ^ v)) request.headers;
+  print_endline "body: \"\"\"";
+  print_endline request.body;
+  print_endline "\"\"\""
+
 let read_request (request: string): request =
   let split_at i s = 
     if succ i > length s then
