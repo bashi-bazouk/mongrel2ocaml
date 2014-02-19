@@ -18,3 +18,15 @@ let mongrel2_response_of_http_response (uuid: string) (ids: int list)
   { uuid = uuid;
     ids = ids;
     Mongrel2Response.body = mongrel2_response_body }
+
+let okay = {
+  code = 200;
+  status = "OKAY";
+  headers = [];
+  body = "" }
+
+let not_found = {
+  code = 404;
+  status = "NOT FOUND";
+  headers = [];
+  body = "" }
