@@ -36,3 +36,9 @@ let internal_server_error = {
   status = "INTERNAL SERVER ERROR";
   headers = [];
   body = "" }
+
+let not_implemented = {
+  code = 501;
+  status = "NOT IMPLEMENTED";
+  headers = [];
+  body = "" }
