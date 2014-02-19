@@ -19,7 +19,7 @@ let pp_request (request: request): unit =
   print_endline request.body;
   print_endline "\"\"\""
 
-let read_request (request: string): request =
+let request_of_string (request: string): request =
   let split_at i s = 
     if succ i > length s then
       (s, "")
