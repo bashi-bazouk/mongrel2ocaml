@@ -1,12 +1,15 @@
 .PHONY: clean
 
-all: request.cmo response.cmo
+all: Mongrel2Request.cmo Mongrel2Response.cmo HTTPResponse.cmo
 
-request.cmo: request.ml
-	ocamlc -o request.cma str.cma request.ml
+Mongrel2Request.cmo: Mongrel2Request.ml
+	ocamlc -o Mongrel2Request.cmo -c str.cma Mongrel2Request.ml
 
-response.cmo: response.ml
-	ocamlc -o response.cma str.cma response.ml
+Mongrel2Response.cmo: Mongrel2Response.ml
+	ocamlc -o Mongrel2Response.cmo -c str.cma Mongrel2Response.ml
+
+HTTPResponse.cmo: HTTPResponse.ml Mongrel2Response.cmo
+	ocamlc -o HTTPResponse.cma -c Mongrel2Response.cmo HTTPResponse.ml
 
 clean:
-	-rm request.cm* request.mli response.cm* response.mli
+	-rm *.cm*

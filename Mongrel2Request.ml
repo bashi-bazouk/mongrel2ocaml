@@ -1,14 +1,14 @@
 open Str
 open String
 
-type request = {
+type mongrel2_request = {
   uuid: string;
   id: int;
   path: string;
   headers: (string * string) list;
   body: string }
 
-let pp_request (request: request): unit =
+let pp_request (request: mongrel2_request): unit =
   print_endline ("uuid: " ^ request.uuid);
   print_endline ("id: " ^ (string_of_int request.id));
   print_endline ("path: " ^ request.path);
@@ -19,7 +19,8 @@ let pp_request (request: request): unit =
   print_endline request.body;
   print_endline "\"\"\""
 
-let request_of_string (request: string): request =
+let request_of_string (request: string): mongrel2_request =
+  (* Helpers *)
   let split_at i s = 
     if succ i > length s then
       (s, "")
@@ -55,6 +56,7 @@ let request_of_string (request: string): request =
   let split_uuid = split_at_space
   and split_id = split_at_space
   and split_path = split_at_space in
+  (* Parse *)
   let (uuid, request') = split_uuid request in
   let (id, request') = split_id request' in
   let (path, request') = split_path request' in
