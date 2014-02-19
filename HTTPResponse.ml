@@ -30,3 +30,9 @@ let not_found = {
   status = "NOT FOUND";
   headers = [];
   body = "" }
+
+let internal_server_error = {
+  code = 500;
+  status = "INTERNAL SERVER ERROR";
+  headers = [];
+  body = "" }
