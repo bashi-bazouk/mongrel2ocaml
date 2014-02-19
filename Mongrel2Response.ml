@@ -9,5 +9,5 @@ type mongrel2_response = {
 
 let string_of_response (r: mongrel2_response): string =
   let netstring_of_string s = (string_of_int (String.length s)) ^ ":" ^ s in
-  let ids = (String.concat " " (map string_of_int r.ids)) in
+  let ids = netstring_of_string (String.concat " " (map string_of_int r.ids)) in
   sprintf "%s %s, %s" r.uuid ids r.body
