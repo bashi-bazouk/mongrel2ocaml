@@ -18,7 +18,7 @@ let mongrel2_response_of_http_response (uuid: string) (ids: int list)
       else
 	let content_length = string_of_int (String.length r.body) in
 	("Content-Length", content_length)::r.headers in
-    String.concat "\r\n" (map (fun (k,v) -> sprintf "%s:%s" k v) headers)  in
+    String.concat "\r\n" (map (fun (k,v) -> sprintf "%s: %s" k v) headers)  in
   let mongrel2_response_body =
     sprintf "HTTP/1.1 %i %s\r\n%s\r\n\r\n%s" r.code r.status headers r.body in
   { uuid = uuid;
@@ -33,18 +33,18 @@ let okay = {
 
 let not_found = {
   code = 404;
-  status = "NOT FOUND";
+  status = "Not Found";
   headers = [];
   body = "" }
 
 let internal_server_error = {
   code = 500;
-  status = "INTERNAL SERVER ERROR";
+  status = "Internal Server Error";
   headers = [];
   body = "" }
 
 let not_implemented = {
   code = 501;
-  status = "NOT IMPLEMENTED";
+  status = "Not Implemented";
   headers = [];
   body = "" }
